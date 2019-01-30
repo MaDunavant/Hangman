@@ -208,7 +208,7 @@ namespace Hangman.Classes
                     Console.WriteLine(@"    ___|_________    ");
                     Console.WriteLine(@"                     ");
                     break;
-                case 8:
+                default:
                     Console.WriteLine(@"        _____        ");
                     Console.WriteLine(@"       |    |        ");
                     Console.WriteLine(@"       |    ()       ");
