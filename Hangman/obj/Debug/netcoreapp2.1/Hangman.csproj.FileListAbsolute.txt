@@ -9,3 +9,14 @@ C:\Users\Matthew Dunavant\source\repos\Hangman\obj\Debug\netcoreapp2.1\Hangman.A
 C:\Users\Matthew Dunavant\source\repos\Hangman\obj\Debug\netcoreapp2.1\Hangman.AssemblyInfo.cs
 C:\Users\Matthew Dunavant\source\repos\Hangman\obj\Debug\netcoreapp2.1\Hangman.dll
 C:\Users\Matthew Dunavant\source\repos\Hangman\obj\Debug\netcoreapp2.1\Hangman.pdb
+C:\Users\Matthew Dunavant\MyProjects\hangman\Hangman\bin\Debug\netcoreapp2.1\Hangman.deps.json
+C:\Users\Matthew Dunavant\MyProjects\hangman\Hangman\bin\Debug\netcoreapp2.1\Hangman.runtimeconfig.json
+C:\Users\Matthew Dunavant\MyProjects\hangman\Hangman\bin\Debug\netcoreapp2.1\Hangman.runtimeconfig.dev.json
+C:\Users\Matthew Dunavant\MyProjects\hangman\Hangman\bin\Debug\netcoreapp2.1\Hangman.dll
+C:\Users\Matthew Dunavant\MyProjects\hangman\Hangman\bin\Debug\netcoreapp2.1\Hangman.pdb
+C:\Users\Matthew Dunavant\MyProjects\hangman\Hangman\obj\Debug\netcoreapp2.1\Hangman.csprojAssemblyReference.cache
+C:\Users\Matthew Dunavant\MyProjects\hangman\Hangman\obj\Debug\netcoreapp2.1\Hangman.csproj.CoreCompileInputs.cache
+C:\Users\Matthew Dunavant\MyProjects\hangman\Hangman\obj\Debug\netcoreapp2.1\Hangman.AssemblyInfoInputs.cache
+C:\Users\Matthew Dunavant\MyProjects\hangman\Hangman\obj\Debug\netcoreapp2.1\Hangman.AssemblyInfo.cs
+C:\Users\Matthew Dunavant\MyProjects\hangman\Hangman\obj\Debug\netcoreapp2.1\Hangman.dll
+C:\Users\Matthew Dunavant\MyProjects\hangman\Hangman\obj\Debug\netcoreapp2.1\Hangman.pdb

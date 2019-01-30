@@ -7,9 +7,15 @@ namespace Hangman
     {
         static void Main(string[] args)
         {
-            HangmanGame game = new HangmanGame();
-            game.Greeting();
-            game.Play();
+            bool playAgain = true;
+
+            do
+            {
+                Console.Clear();
+                HangmanGame game = new HangmanGame();
+                game.Greeting();
+                game.Play();
+            } while (playAgain);
         }
     }
 }

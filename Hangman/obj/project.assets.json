@@ -694,11 +694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Matthew Dunavant\\source\\repos\\Hangman\\Hangman.csproj",
+      "projectUniqueName": "C:\\Users\\Matthew Dunavant\\MyProjects\\hangman\\Hangman\\Hangman.csproj",
       "projectName": "Hangman",
-      "projectPath": "C:\\Users\\Matthew Dunavant\\source\\repos\\Hangman\\Hangman.csproj",
+      "projectPath": "C:\\Users\\Matthew Dunavant\\MyProjects\\hangman\\Hangman\\Hangman.csproj",
       "packagesPath": "C:\\Users\\Matthew Dunavant\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Matthew Dunavant\\source\\repos\\Hangman\\obj\\",
+      "outputPath": "C:\\Users\\Matthew Dunavant\\MyProjects\\hangman\\Hangman\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

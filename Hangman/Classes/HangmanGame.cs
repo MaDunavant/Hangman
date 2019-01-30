@@ -9,10 +9,12 @@ namespace Hangman.Classes
         public string HangmanWord { get; set; }
         public string GuessAttempt { get; set; }
         public List<string> Guesses { get; set; }
+        public int WrongGuessCount { get; set; }
 
         public HangmanGame()
         {
             this.Guesses = new List<string>();
+            this.WrongGuessCount = 0;
         }
 
         public void Play()
@@ -25,12 +27,30 @@ namespace Hangman.Classes
             while (true)
             {
                 Console.Clear();
-                this.HangmanArt(this.Guesses.Count);
+                this.HangmanArt(this.WrongGuessCount);
                 Console.WriteLine($"Hangman Word: {this.FormatWord()}");
                 Console.Write("Player Two, what is your next guess: ");
 
                 this.GuessAttempt = this.GetGuess();
+
+                if (!this.HangmanWord.Contains(this.GuessAttempt))
+                {
+                    this.WrongGuessCount++;
+                }
+                else if (!this.FormatWord().Contains('_'))
+                {
+                    break;
+                }
             }
+
+            Console.Clear();
+            this.HangmanArt(this.WrongGuessCount);
+            Console.WriteLine($"Hangman Word: {this.FormatWord()}");
+            Console.WriteLine();
+            Console.WriteLine($"The word has been discovered. It took you {this.Guesses.Count} guesses.");
+            Console.WriteLine($"You didn't guess a correct letter {this.WrongGuessCount} times.");
+            Console.WriteLine();
+            Console.ReadLine();
         }
 
         private string GetGuess()
