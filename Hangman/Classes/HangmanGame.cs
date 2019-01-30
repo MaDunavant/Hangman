@@ -21,8 +21,7 @@ namespace Hangman.Classes
         {
             Console.Clear();
             Console.WriteLine("Player One, input a word or phrase. Player Two NO PEEKING: ");
-            this.HangmanWord = Console.ReadLine();
-            string formattedWord;
+            this.HangmanWord = Console.ReadLine().ToLower();
 
             while (true)
             {
@@ -60,7 +59,7 @@ namespace Hangman.Classes
 
             do
             {
-                output = Console.ReadLine();
+                output = Console.ReadLine().ToLower();
                 if (output.Length > 1)
                 {
                     Console.WriteLine("Nice try. You can only guess 1 letter at a time");
@@ -113,6 +112,7 @@ namespace Hangman.Classes
                     {
                         guessed = true;
                         word += guess.ToUpper() + " ";
+                        break;
                     }
                 }
                 if (guessed)
@@ -242,5 +242,7 @@ namespace Hangman.Classes
                     break;
             }
         }
+
+        //public void DisplayGuesses()
     }
 }
