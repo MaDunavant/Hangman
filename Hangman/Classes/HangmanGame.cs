@@ -45,6 +45,8 @@ namespace Hangman.Classes
                 Console.Clear();
                 this.HangmanArt(this.WrongGuessCount);
                 Console.WriteLine($"Hangman Word: {this.FormatWord()}");
+                Console.WriteLine();
+                Console.WriteLine($"Remaining letters: {this.RemainingLetters()}");
                 Console.WriteLine($"Previous Guesses: {this.DisplayGuesses()}");
                 Console.Write("Player Two, what is your next guess: ");
 
@@ -66,6 +68,8 @@ namespace Hangman.Classes
             Console.Clear();
             this.HangmanArt(this.WrongGuessCount);
             Console.WriteLine($"Hangman Word: {this.FormatWord()}");
+            Console.WriteLine();
+            Console.WriteLine($"Remaining letters: {this.RemainingLetters()}");
             Console.WriteLine($"Previous Guesses: {this.DisplayGuesses()}");
             Console.WriteLine();
             Console.WriteLine($"The word has been discovered. It took you {this.Guesses.Count} guesses.");
@@ -116,7 +120,7 @@ namespace Hangman.Classes
             return output;
         }
 
-        public string FormatWord()
+        private string FormatWord()
         {
             string word = "";
 
@@ -149,6 +153,20 @@ namespace Hangman.Classes
             }
 
             return word;
+        }
+
+        private string RemainingLetters()
+        {
+            string output = "";
+            foreach (string letter in this.validChars)
+            {
+                if (!this.Guesses.Contains(letter))
+                {
+                    output += letter + ", ";
+                }
+            }
+
+            return output.Trim(',');
         }
 
         public void HangmanArt(int guesses)
