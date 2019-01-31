@@ -10,10 +10,12 @@ namespace Hangman.Classes
         public string GuessAttempt { get; set; }
         public List<string> Guesses { get; set; }
         public int WrongGuessCount { get; set; }
+        HashSet<string> uniqueGuesses { get; set; }
 
         public HangmanGame()
         {
             this.Guesses = new List<string>();
+            this.uniqueGuesses = new HashSet<string>();
             this.WrongGuessCount = 0;
         }
 
@@ -28,6 +30,7 @@ namespace Hangman.Classes
                 Console.Clear();
                 this.HangmanArt(this.WrongGuessCount);
                 Console.WriteLine($"Hangman Word: {this.FormatWord()}");
+                Console.WriteLine($"Previous Guesses: {this.DisplayGuesses()}");
                 Console.Write("Player Two, what is your next guess: ");
 
                 this.GuessAttempt = this.GetGuess();
@@ -60,6 +63,7 @@ namespace Hangman.Classes
             do
             {
                 output = Console.ReadLine().ToLower();
+
                 if (output.Length > 1)
                 {
                     Console.WriteLine("Nice try. You can only guess 1 letter at a time");
@@ -73,9 +77,16 @@ namespace Hangman.Classes
                     validGuess = true;
                 }
 
+                if (this.uniqueGuesses.Contains(output))
+                {
+                    Console.WriteLine("You've already guessed that! Go ahead and try again:");
+                    validGuess = false;
+                }
+
             } while (!validGuess);
 
             this.Guesses.Add(output);
+            this.uniqueGuesses.Add(output);
             return output;
         }
 
@@ -243,6 +254,19 @@ namespace Hangman.Classes
             }
         }
 
-        //public void DisplayGuesses()
+        public string DisplayGuesses()
+        {
+            string output = "";
+            this.Guesses.Sort();
+
+            foreach (string letter in this.uniqueGuesses)
+            {
+                output += (letter + ", ");
+            }
+
+            output = output.Trim(',');
+
+            return output;
+        }
     }
 }
