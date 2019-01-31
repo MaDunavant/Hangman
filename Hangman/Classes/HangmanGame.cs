@@ -9,14 +9,29 @@ namespace Hangman.Classes
         public string HangmanWord { get; set; }
         public string GuessAttempt { get; set; }
         public List<string> Guesses { get; set; }
-        public int WrongGuessCount { get; set; }
-        HashSet<string> uniqueGuesses { get; set; }
+        public int WrongGuessCount { get; private set; }
+        public List<string> validChars { get; }
 
         public HangmanGame()
         {
             this.Guesses = new List<string>();
-            this.uniqueGuesses = new HashSet<string>();
             this.WrongGuessCount = 0;
+            this.validChars = new List<string>() { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
+
+        }
+
+        public void Greeting()
+        {
+            Console.WriteLine("Welcome to Hangman");
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine("Rules:");
+            Console.WriteLine("This is a two player game. Player One will input a word");
+            Console.WriteLine("and Player Two will guess letters in attempts to figure");
+            Console.WriteLine("out what Player One entered. After the word is guessed,");
+            Console.WriteLine("Player Two will be graded based on how well they performed.");
+            Console.WriteLine();
+            Console.WriteLine("Ready to Play? (press Enter to Continue)");
+            Console.ReadLine();
         }
 
         public void Play()
@@ -44,10 +59,14 @@ namespace Hangman.Classes
                     break;
                 }
             }
+        }
 
+        public void EndGame()
+        { 
             Console.Clear();
             this.HangmanArt(this.WrongGuessCount);
             Console.WriteLine($"Hangman Word: {this.FormatWord()}");
+            Console.WriteLine($"Previous Guesses: {this.DisplayGuesses()}");
             Console.WriteLine();
             Console.WriteLine($"The word has been discovered. It took you {this.Guesses.Count} guesses.");
             Console.WriteLine($"You didn't guess a correct letter {this.WrongGuessCount} times.");
@@ -66,42 +85,35 @@ namespace Hangman.Classes
 
                 if (output.Length > 1)
                 {
-                    Console.WriteLine("Nice try. You can only guess 1 letter at a time");
+                    Console.Write("Nice try. You can only guess 1 letter at a time. Try again: ");
                 }
                 else if (output.Length < 1)
                 {
-                    Console.WriteLine("You have to guess something!");
+                    Console.Write("You have to guess something! Try again: ");
                 }
                 else
                 {
                     validGuess = true;
                 }
 
-                if (this.uniqueGuesses.Contains(output))
+                if (this.Guesses.Contains(output))
                 {
-                    Console.WriteLine("You've already guessed that! Go ahead and try again:");
+                    Console.Write("You've already guessed that! Go ahead and try again:");
                     validGuess = false;
+                    continue;
+                }
+
+                if (!this.validChars.Contains(output))
+                {
+                    Console.Write("Punctuation/Numbers have already been added. Try again: ");
+                    validGuess = false;
+                    continue;
                 }
 
             } while (!validGuess);
 
             this.Guesses.Add(output);
-            this.uniqueGuesses.Add(output);
             return output;
-        }
-
-        public void Greeting()
-        {
-            Console.WriteLine("Welcome to Hangman");
-            Console.WriteLine("-------------------------------------");
-            Console.WriteLine("Rules:");
-            Console.WriteLine("This is a two player game. Player One will input a word");
-            Console.WriteLine("and Player Two will guess letters in attempts to figure");
-            Console.WriteLine("out what Player One entered. After the word is guessed,");
-            Console.WriteLine("Player Two will be graded based on how well they performed.");
-            Console.WriteLine();
-            Console.WriteLine("Ready to Play? (press Enter to Continue)");
-            Console.ReadLine();
         }
 
         public string FormatWord()
@@ -112,9 +124,9 @@ namespace Hangman.Classes
             {
                 bool guessed = false;
 
-                if (this.HangmanWord[i].ToString() == " ")
+                if (!this.validChars.Contains(this.HangmanWord[i].ToString()))
                 {
-                    word += "  ";
+                    word += this.HangmanWord[i] + " ";
                     continue;
                 }
                 foreach (string guess in this.Guesses)
@@ -259,14 +271,12 @@ namespace Hangman.Classes
             string output = "";
             this.Guesses.Sort();
 
-            foreach (string letter in this.uniqueGuesses)
+            foreach (string letter in this.Guesses)
             {
                 output += (letter + ", ");
             }
 
-            output = output.Trim(',');
-
-            return output;
+            return output.Trim(',');
         }
     }
 }

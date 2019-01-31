@@ -15,6 +15,7 @@ namespace Hangman
                 HangmanGame game = new HangmanGame();
                 game.Greeting();
                 game.Play();
+                game.EndGame();
             } while (playAgain);
         }
     }
